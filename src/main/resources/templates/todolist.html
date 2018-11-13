@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My ToDo app</title>
+    <link th:rel="'stylesheet'" th:type="'text/css'" th:href="'/style.css'">
+</head>
+<body>
+<header>
+
+</header>
+<main>
+    <h1 th:text="'ToDo\'s for today:'"></h1>
+    <a th:href="'/todo/add'" th:text="'Add new todo'"></a>
+    <table>
+        <thead>
+            <tr>
+                <td th:text="'List of things to do'" th:colspan="'2'"></td>
+            </tr>
+            <tr>
+                <td th:text="'ID'"></td>
+                <td th:text="'Title'"></td>
+                <td th:text="'Done'"></td>
+                <td th:text="'Urgent'"></td>
+                <td th:text="'Created'"></td>
+                <td th:text="'Delete'"></td>
+                <td th:text="'Update'"></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="todo : ${todos}">
+                <td th:text="${todo.getId()}"></td>
+                <td th:text="${todo.getTitle()}"></td>
+                <td th:text="${todo.isDone()}"></td>
+                <td th:text="${todo.isUrgent()}"></td>
+
+                <td><a th:href="'/todo/' + ${todo.getId()} + '/delete'" th:text="'Delete'"></a></td>
+                <td><a th:href="'/todo/' + ${todo.getId()} + '/update'" th:text="'Update'"></a></td>
+
+            </tr>
+        </tbody>
+    </table>
+</main>
+
+<footer>
+
+</footer>
+</body>
+</html>
